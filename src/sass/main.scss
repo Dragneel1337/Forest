@@ -1,5 +1,4 @@
 @use './colors' as *;
-@use './mixins' as mix;
 
 * {
     margin: 0;
@@ -21,9 +20,10 @@ body {
     background-color: $light;
 }
 
-ul,
-li {
-    list-style: none;
+.wrapper {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
 }
 
 // NAV
@@ -80,7 +80,7 @@ li {
     align-items: center;
     width: 100%;
     height: 90px;
-    background-color: $gray;
+    background-color: $light;
     z-index: 100;
 
     &__logo {
@@ -91,7 +91,7 @@ li {
         justify-content: center;
         align-items: center;
         font-size: 2.5em;
-        color: $gray;
+        color: $dark;
         text-decoration: none;
         z-index: 200;
 
@@ -101,37 +101,104 @@ li {
         }
     }
 
+    &__box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        height: 100vh;
+        width: 100%;
+        background-color: $light;
+        transition: transform .5s;
+        transform: translateX(400px);
 
-    &__item {
-        position: relative;
-        display: block;
-        margin: 0.5em 0;
-        padding: 0.5em 2em;
-        font-size: 3rem;
-        color: $dark;
-        text-decoration: none;
-
-        &::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 100%;
-            width: 3px;
-            transform: scaleY(0);
-            background-color: $light;
-            transition: transform .3s;
-            transform-origin: left;
+        &.show-nav {
+            transform: translateX(0);
         }
 
-        &:hover::after {
-            transform: scaleY(1);
-        }
-
-
-        a {
-            font-size: 2.8em;
+        &--item {
+            position: relative;
+            display: block;
+            margin: 0.5em 0;
+            padding: 0.5em 2em;
+            font-size: 3rem;
             color: $dark;
+            text-decoration: none;
+
+            &::before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 3px;
+                height: 100%;
+                transform: scaleY(0);
+                background-color: $gray;
+                content: '';
+                transition: transform .3s;
+            }
+
+            &:hover::before {
+                transform: scaleY(1);
+            }
         }
+
     }
+}
+
+// HEADER
+
+.header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+    width: 100%;
+    height: 350px;
+    background-image: url('/dist/img/header_img-small.jpg');
+    background-size: cover;
+    background-position: 50% 50%;
+    background-attachment: scroll;
+    z-index: -2;
+    text-align: center;
+
+    &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        content: '';
+        z-index: -1;
+    }
+
+    &__title {
+        color: $light;
+        font-size: 2rem;
+    }
+
+    &__text {
+        color: $light;
+        font-size: 3rem;
+        font-weight: 500;
+        margin-top: 10px;
+    }
+}
+
+
+@keyframes navItemsAnimation {
+    from {
+        transform: translateX(200%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.nav-animation {
+    animation: navItemsAnimation 1s both;
 }
