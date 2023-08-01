@@ -112,7 +112,7 @@ body {
         width: 100%;
         background-color: $light;
         transition: transform .5s;
-        transform: translateX(1000px);
+        transform: translateX(3000px);
 
         &.show-nav {
             transform: translateX(0);
@@ -327,6 +327,7 @@ body {
         &__options {
             font-size: 1em;
             text-align: left;
+            margin-bottom: 1em;
         }
 
         &__option {
@@ -334,7 +335,7 @@ body {
         }
 
         &__button {
-            margin-top: 1.5em;
+            position: relative;
             padding: .8em 5.5em;
             background-color: $light;
             border: none;
@@ -342,32 +343,24 @@ body {
             box-shadow: 0px 0px 10px rgba(0, 0, 0, .5);
             border-radius: 8px;
             cursor: pointer;
-            transition: background-color .3s, color .3s;
+            transition: .5s;
 
             &:focus {
                 border: 1px solid #1cbe03;
             }
 
             &:hover {
-                color: $light;
                 background-color: #1cbe03;
+                color: $light;
             }
 
-            &--special {
-                margin-top: 1.5em;
-                padding: .8em 5.5em;
-                background-color: rgb(28, 190, 3);
-                border: none;
-                outline: none;
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, .5);
-                border-radius: 8px;
-
-                &:focus {
-                    border: 1px solid rgb(28, 190, 3);
-                }
+            &.special {
+                background-color: #1cbe03;
+                color: $light;
 
                 &:hover {
-                    background-color: dark;
+                    background-color: $light;
+                    color: $dark;
                 }
             }
         }
