@@ -1,7 +1,10 @@
 const burgerBtn = document.querySelector('.burger-btn');
-const nav = document.querySelector('.nav__box')
-const allNavItems = document.querySelectorAll('.nav__box--item')
+const nav = document.querySelector('.nav__box');
+const allNavItems = document.querySelectorAll('.nav__box--item');
+const footerYear = document.querySelector('.time');
 
+const year = new Date();
+footerYear.textContent = year.getFullYear();
 
 const handleNav = () => {
     burgerBtn.classList.toggle('active');
